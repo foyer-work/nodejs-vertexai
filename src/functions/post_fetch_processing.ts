@@ -129,11 +129,12 @@ function getResponseStream(
         return reader.read().then(({value, done}) => {
           if (done) {
             if (currentText.trim()) {
-              controller.error(
-                new GoogleGenerativeAIError(
-                  'Failed to parse final chunk of stream'
-                )
-              );
+            //   controller.error(
+            //     new GoogleGenerativeAIError(
+            //       'Failed to parse final chunk of stream'
+            //     )
+            //   );
+              controller.close();
               return;
             }
             controller.close();
